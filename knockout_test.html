@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Knockoutjs Practice</title>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script type='text/javascript' src='lib/knockout-3.3.0.js'></script>
+    <script type='text/javascript' src='lib/jquery-2.1.4.min.js'></script>
+    <script type='text/javascript' src='js/knockout_test.js'></script>
+</head>
+
+<body>
+    <div id="employeeWrapper">
+        <div data-bind="foreach: employees">
+            <div>
+                <label>Full Name</label>
+                <input type="text" data-bind="value: fullName"/>
+                <label>Position</label>
+                <select id="slTest" data-bind="options: $root.Positions, value:position, optionsText:'name'"></select>
+                <label>Salary:</label><span data-bind="text: position().formatted"></span>
+            </div>
+        </div>
+        <button id="button" data-bind="click: addEmployee">Add Employee</button>
+        <button id="AddPosition" data-bind="click: open">Add Position</button>
+    </div>
+
+    <div data-bind="dialog: {autoOpen: false, title: 'Dialog test' },  dialogVisible: isOpen">
+        <!-- ko with: dialogPosition -->
+        <div>
+            <label>Name:</label>
+            <input type="text" data-bind="value:name"/>
+        </div>
+        <div>
+            <label>salary:</label>
+            <input type="text" data-bind="value:salary"/>
+        </div>
+        <!-- /ko -->
+        <button data-bind="click: addPosition">Add</button>
+    </div>
+</body>
+
+</html>

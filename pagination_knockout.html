@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pagination Knockout</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/pagination.css">
+    <script type='text/javascript' src='lib/knockout-3.3.0.js'></script>
+    <script type='text/javascript' src='js/pagination_knockout.js'></script>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Type</th>
+            <th>Name</th>
+        </tr>
+        <tbody data-bind='template: { name: "fieldTemplate", foreach: pagedRows }'></tbody>
+    </table>
+    <a href="#" data-bind="click: previousPage, visible: pageIndex() > 0">Previous</a>
+    <a href="#" data-bind="click: nextPage, visible: pageIndex() < maxPageIndex()">Next</a>
+
+    <script type="text/html" id="fieldTemplate">
+        <tr>
+            <td data-bind="text: FieldId"></td>
+            <td data-bind="text: Type"></td>
+            <td><b data-bind="text: Name"></b>: <span data-bind="text: Description"></span></td>
+        </tr>
+    </script>
+</body>
+</html>
